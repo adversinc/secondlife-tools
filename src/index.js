@@ -1,4 +1,5 @@
 import moment from '@advers/moment-SLT';
+import uuidParse from "uuid-parse";
 
 /**
  * Transforms slname to the normalized form:
@@ -74,6 +75,42 @@ function split_slname(slname) {
 	return (parts.length > 1)? parts: [normalized, ""];
 }
 
+
+/**
+ * Unpack UUID packed by SmartBots
+ * @param {String} slkey
+ * @returns {Buffer}
+ */
+function sbPackSLKey(slkey) {
+	const bin = Buffer.from(uuidParse.parse(slkey));
+
+	// SmartBots packSLkey has OCTETS order reversed, so we have to re-pack values here
+	const bin2 = Buffer.alloc(16);
+	for(let i=0; i<16; i++) {
+		bin2[i] = (bin[i] << 4) + (bin[i] >> 4);
+	}
+
+	return bin2;
+}
+
+
+/**
+ *
+ * @param {Buffer} packed - the smartbots-style packed UUID
+ * @returns {string}
+ */
+function sbUnpackSLKey(packed) {
+	const bin = Buffer.from(packed);
+
+	// SmartBots packSLkey has OCTETS order reversed, so we have to re-pack values here
+	const bin2 = Buffer.alloc(16);
+	for(let i=0; i<16; i++) {
+		bin2[i] = (bin[i] << 4) + (bin[i] >> 4);
+	}
+
+	return uuidParse.unparse(bin2);
+}
+
 export default {
 	/**
 	 * Returns true if slname is a valid Second Life account name
@@ -98,4 +135,6 @@ export default {
 	normalize_slname,
 	timeToSLT,
 	split_slname,
+	sbPackSLKey,
+	sbUnpackSLKey,
 };
