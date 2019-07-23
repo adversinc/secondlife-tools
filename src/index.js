@@ -1,4 +1,4 @@
-import moment from './moment-timezone-LA';
+import moment from '@advers/moment-SLT';
 
 /**
  * Transforms slname to the normalized form:

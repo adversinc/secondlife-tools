@@ -83,3 +83,24 @@ describe('equalSLName', function() {
 	});
 });
 
+
+describe('equalSLName', function() {
+	it('should succeed', function() {
+		assert.ok(SLTools.equalSLName("Fname Lname", "fname lname"));
+		assert.ok(SLTools.equalSLName("Fname", "fname resident"));
+		assert.ok(SLTools.equalSLName("Fname", "fname Resident"));
+	});
+	it('should fail', function() {
+		assert.ok(!SLTools.equalSLName("Fname", "fname2 Resident"));
+	});
+});
+
+
+describe('timeToSLT', function() {
+	it('should return current time', function() {
+		console.log(SLTools.timeToSLT());
+
+		assert.ok(true);
+	});
+});
+

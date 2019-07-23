@@ -2,6 +2,13 @@
 # yarn lockfile v1
 
 
+"@advers/moment-SLT@^1.0.2":
+  version "1.0.2"
+  resolved "https://npm.metabizlist.com/@advers%2fmoment-SLT/-/moment-SLT-1.0.2.tgz#6202b338fb6dd2a179b3abdcfa28ae795e3f6189"
+  integrity sha512-FcJkzDSCwNbMK1wdP+BfD9Fsr/YtVDfEZBwtupJ80BDLSqRtCW17eU7n6lMhAxUYYoU9rKWMRYCySH/6BHBDFA==
+  dependencies:
+    moment-timezone "^0.5.26"
+
 "@babel/cli@^7.5.5":
   version "7.5.5"
   resolved "https://npm.metabizlist.com/@babel%2fcli/-/cli-7.5.5.tgz#bdb6d9169e93e241a08f5f7b0265195bf38ef5ec"
@@ -2119,7 +2126,7 @@ moment-timezone@^0.5.26:
   dependencies:
     moment ">= 2.9.0"
 
-"moment@>= 2.9.0", moment@^2.24.0:
+"moment@>= 2.9.0":
   version "2.24.0"
   resolved "https://npm.metabizlist.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
   integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
