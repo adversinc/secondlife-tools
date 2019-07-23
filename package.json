@@ -1,14 +1,16 @@
 {
   "name": "@advers/secondlife-tools",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Tools to manupulate with Second Life entities",
   "private": false,
   "main": "lib/index.js",
   "scripts": {
     "build": "babel -d lib/ src/",
     "prepare": "npm run build",
-    "test": "npm run build && mocha",
-    "publish": "yarn publish --registry https://npm.metabizlist.com/"
+    "test": "npm run build && mocha"
+  },
+  "publishConfig": {
+    "registry": "https://npm.metabizlist.com"
   },
   "repository": "https://github.com/adversinc/secondlife-tools.git",
   "author": "Glaznah Gassner <dinofabrello@slbiz2life.com>",
@@ -27,7 +29,6 @@
     "source-map-support": "^0.5.12"
   },
   "dependencies": {
-    "moment": "^2.24.0",
-    "moment-timezone": "^0.5.26"
+    "@advers/moment-SLT": "^1.0.2"
   }
 }
