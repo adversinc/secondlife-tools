@@ -1,6 +1,11 @@
 import moment from '@advers/moment-SLT';
 import uuidParse from "uuid-parse";
 
+// Detect if we need to load the browser-side buffer module
+if(Buffer === undefined) {
+	Buffer = require("buffer/").Buffer;
+}
+
 /**
  * Transforms slname to the normalized form:
  * - adds "Resident" if slname is a single word login

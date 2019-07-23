@@ -109,12 +109,32 @@ describe('slPackSLKey', function() {
 		const n = SLTools.sbPackSLKey("cd93067e-7c4e-41c0-ba91-be01f4bafe35");
 		assert.deepEqual(n, [220, 57, 96, 231, 199, 228, 20, 12, 171, 25, 235, 16, 79, 171, 239, 83]);
 	});
+
+	it('should pack correctly with external buffer', function() {
+		const t = Buffer;
+		Buffer = require("buffer/").Buffer;
+
+		const n = SLTools.sbPackSLKey("cd93067e-7c4e-41c0-ba91-be01f4bafe35");
+		assert.deepEqual(n, [220, 57, 96, 231, 199, 228, 20, 12, 171, 25, 235, 16, 79, 171, 239, 83]);
+
+		Buffer = t;
+	});
 });
 
 describe('sbUnpackSLKey', function() {
 	it('should unpack correctly', function() {
 		const n = SLTools.sbUnpackSLKey([220, 57, 96, 231, 199, 228, 20, 12, 171, 25, 235, 16, 79, 171, 239, 83]);
 		assert.equal(n, "cd93067e-7c4e-41c0-ba91-be01f4bafe35");
+	});
+
+	it('should unpack correctly with external buffer', function() {
+		const t = Buffer;
+		Buffer = require("buffer/").Buffer;
+
+		const n = SLTools.sbUnpackSLKey([220, 57, 96, 231, 199, 228, 20, 12, 171, 25, 235, 16, 79, 171, 239, 83]);
+		assert.equal(n, "cd93067e-7c4e-41c0-ba91-be01f4bafe35");
+
+		Buffer = t;
 	});
 });
 
