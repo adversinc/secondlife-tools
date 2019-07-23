@@ -1,6 +1,6 @@
 {
   "name": "@advers/secondlife-tools",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Tools to manupulate with Second Life entities",
   "private": false,
   "main": "lib/index.js",
@@ -29,6 +29,7 @@
     "source-map-support": "^0.5.12"
   },
   "dependencies": {
-    "@advers/moment-SLT": "^1.0.2"
+    "@advers/moment-SLT": "^1.0.2",
+    "uuid-parse": "^1.1.0"
   }
 }
