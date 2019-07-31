@@ -80,9 +80,27 @@ function split_slname(slname) {
 	return (parts.length > 1)? parts: [normalized, ""];
 }
 
+/**
+ * Pack UUID to binary
+ * @param slkey
+ * @returns {Buffer}
+ */
+function packSLKey(slkey) {
+	return Buffer.from(uuidParse.parse(slkey));
+}
+
 
 /**
- * Unpack UUID packed by SmartBots
+ * Unpack UUID from binary
+ * @param packed
+ * @returns {*}
+ */
+function unpackSLKey(packed) {
+	return uuidParse.unparse(Buffer.from(packed));
+}
+
+/**
+ * Pack UUID to binary like SmartBots do
  * @param {String} slkey
  * @returns {Buffer}
  */
@@ -142,4 +160,6 @@ export default {
 	split_slname,
 	sbPackSLKey,
 	sbUnpackSLKey,
+	packSLKey,
+	unpackSLKey
 };
