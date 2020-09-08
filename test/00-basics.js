@@ -4,6 +4,7 @@ const
 
 // Libs to test
 const SLTools = require("../lib/index");
+console.log("SLTools:", SLTools);
 
 // Tests
 describe('normalize_slname', function() {
@@ -63,11 +64,13 @@ describe('checkSLName', function() {
 		assert.ok(SLTools.checkSLName("Fname"));
 		assert.ok(SLTools.checkSLName("Fname22 Lname"));
 		assert.ok(SLTools.checkSLName("Fname_22 Lname"));
+		assert.ok(SLTools.checkSLName("2Fname Lname"));
+		assert.ok(SLTools.checkSLName("2Fname"));
 	});
 	it('should fail', function() {
 		assert.ok(!SLTools.checkSLName("Fname@22 Lname"));
-		assert.ok(!SLTools.checkSLName("2Fname Lname"));
-		assert.ok(!SLTools.checkSLName("2Fname"));
+		assert.ok(!SLTools.checkSLName("_2Fname Lname"));
+		assert.ok(!SLTools.checkSLName("_2Fname"));
 	});
 });
 
@@ -107,7 +110,7 @@ describe('timeToSLT', function() {
 describe('slPackSLKey', function() {
 	it('should pack correctly', function() {
 		const n = SLTools.sbPackSLKey("cd93067e-7c4e-41c0-ba91-be01f4bafe35");
-		assert.deepEqual(n, [220, 57, 96, 231, 199, 228, 20, 12, 171, 25, 235, 16, 79, 171, 239, 83]);
+		assert.deepEqual(n, new Uint8Array([220, 57, 96, 231, 199, 228, 20, 12, 171, 25, 235, 16, 79, 171, 239, 83]));
 	});
 
 	it('should pack correctly with external buffer', function() {
@@ -115,7 +118,7 @@ describe('slPackSLKey', function() {
 		Buffer = require("buffer/").Buffer;
 
 		const n = SLTools.sbPackSLKey("cd93067e-7c4e-41c0-ba91-be01f4bafe35");
-		assert.deepEqual(n, [220, 57, 96, 231, 199, 228, 20, 12, 171, 25, 235, 16, 79, 171, 239, 83]);
+		assert.deepEqual(n, new Uint8Array([220, 57, 96, 231, 199, 228, 20, 12, 171, 25, 235, 16, 79, 171, 239, 83]));
 
 		Buffer = t;
 	});
@@ -141,7 +144,7 @@ describe('sbUnpackSLKey', function() {
 describe('packSLKey', function() {
 	it('should pack correctly', function() {
 		const n = SLTools.packSLKey("cd93067e-7c4e-41c0-ba91-be01f4bafe35");
-		assert.deepEqual(n, [0xcd,0x93,0x06,0x7e,0x7c,0x4e,0x41,0xc0,0xba,0x91,0xbe,0x01,0xf4,0xba,0xfe,0x35]);
+		assert.deepEqual(n, new Uint8Array([0xcd,0x93,0x06,0x7e,0x7c,0x4e,0x41,0xc0,0xba,0x91,0xbe,0x01,0xf4,0xba,0xfe,0x35]));
 	});
 
 	it('should pack correctly with external buffer', function() {
@@ -149,7 +152,7 @@ describe('packSLKey', function() {
 		Buffer = require("buffer/").Buffer;
 
 		const n = SLTools.packSLKey("cd93067e-7c4e-41c0-ba91-be01f4bafe35");
-		assert.deepEqual(n, [0xcd,0x93,0x06,0x7e,0x7c,0x4e,0x41,0xc0,0xba,0x91,0xbe,0x01,0xf4,0xba,0xfe,0x35]);
+		assert.deepEqual(n, new Uint8Array([0xcd,0x93,0x06,0x7e,0x7c,0x4e,0x41,0xc0,0xba,0x91,0xbe,0x01,0xf4,0xba,0xfe,0x35]));
 
 		Buffer = t;
 	});

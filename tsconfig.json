@@ -1,0 +1,25 @@
+{
+	"compilerOptions": {
+		"emitDeclarationOnly": true,
+
+		//"sourceMap": true,
+		"allowJs": true,
+		"esModuleInterop": true,
+		"moduleResolution": "Node",
+		"module": "commonjs",
+		"target": "ES2017",
+		"declaration": true,
+		"noImplicitUseStrict": true,
+
+		"baseUrl": "./",
+		"paths" : {
+			"/*": ["./*"]
+		}
+
+		//"outDir": "lib"
+	},
+
+	"include": [
+		"./src/*"
+	]
+}

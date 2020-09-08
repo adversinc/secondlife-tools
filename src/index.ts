@@ -1,10 +1,19 @@
 import moment from '@advers/moment-SLT';
+import { Moment } from 'moment/moment.d.ts';
 import uuidParse from "uuid-parse";
 
+declare var Buffer: any;
+
 // Detect if we need to load the browser-side buffer module
-if(Buffer === undefined) {
-	Buffer = require("buffer/").Buffer;
+//if(typeof Buffer === "undefined") {
+	// @ts-ignore
+	//Buffer = require("buffer/").Buffer;
+//}
+if(typeof window !== "undefined") {
+	// @ts-ignore
+	window.Buffer = window.Buffer || require('buffer/').Buffer;
 }
+
 
 /**
  * Transforms slname to the normalized form:
@@ -12,7 +21,7 @@ if(Buffer === undefined) {
  * @param slname
  * @returns {string} normalized name
  */
-function normalize_slname(slname) {
+function normalize_slname(slname: string): string {
 	if(typeof(slname) !== "string") { return ""; }
 
 	slname = slname.replace('.', ' ');
@@ -32,7 +41,7 @@ function normalize_slname(slname) {
  * @param slname
  * @returns {string} text representation of the name
  */
-function slname2str(slname) {
+function slname2str(slname: string): string {
 	slname = normalize_slname(slname);
 
 	var parts = slname.split(" ");
@@ -53,7 +62,7 @@ function slname2str(slname) {
  * Also, datetime may be empty - current SL time is being returned then
  * @param datetime
  */
-function timeToSLT(datetime) {
+function timeToSLT(datetime = undefined): Moment {
 	if(!datetime) { datetime = new Date(); }
 
 	return moment.tz(datetime, "America/Los_Angeles");
@@ -104,7 +113,7 @@ function unpackSLKey(packed) {
  * @param {String} slkey
  * @returns {Buffer}
  */
-function sbPackSLKey(slkey) {
+function sbPackSLKey(slkey): number[] {
 	const bin = Buffer.from(uuidParse.parse(slkey));
 
 	// SmartBots packSLkey has OCTETS order reversed, so we have to re-pack values here
@@ -134,15 +143,15 @@ function sbUnpackSLKey(packed) {
 	return uuidParse.unparse(bin2);
 }
 
-export default {
+export default  {
 	/**
 	 * Returns true if slname is a valid Second Life account name
 	 * (either normalized or not)
 	 * @param slname
 	 * @returns {boolean} check result
 	 */
-	checkSLName(slname) {
-		return slname.match(/^[a-z0-9][a-z0-9_]+( [a-z0-9_]+)?$/i);
+	checkSLName(slname: string): boolean {
+		return slname.match(/^[a-z0-9][a-z0-9_]+( [a-z0-9_]+)?$/i) != null;
 	},
 
 	/**
@@ -150,7 +159,7 @@ export default {
 	 * @param slname1
 	 * @param slname2
 	 */
-	equalSLName(slname1, slname2) {
+	equalSLName(slname1: string, slname2: string): boolean {
 		return normalize_slname(slname1).toLowerCase() === normalize_slname(slname2).toLowerCase();
 	},
 
@@ -163,3 +172,4 @@ export default {
 	packSLKey,
 	unpackSLKey
 };
+
