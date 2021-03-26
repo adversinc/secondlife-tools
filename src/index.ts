@@ -151,7 +151,11 @@ export default  {
 	 * @returns {boolean} check result
 	 */
 	checkSLName(slname: string): boolean {
-		return slname.match(/^[a-z0-9][a-z0-9_]+( [a-z0-9_]+)?$/i) != null;
+		if(!slname.charAt(0).match(/^[a-z0-9]$/i)) {
+			return false;
+		}
+
+		return slname.match(/^[a-z0-9_]+( [a-z0-9_]+)?$/i) != null;
 	},
 
 	/**

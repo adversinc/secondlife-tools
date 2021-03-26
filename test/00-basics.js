@@ -3,7 +3,7 @@ const
 	assert = require('assert');
 
 // Libs to test
-const SLTools = require("../lib/index");
+const SLTools = require("../lib/index").default;
 console.log("SLTools:", SLTools);
 
 // Tests
@@ -66,6 +66,8 @@ describe('checkSLName', function() {
 		assert.ok(SLTools.checkSLName("Fname_22 Lname"));
 		assert.ok(SLTools.checkSLName("2Fname Lname"));
 		assert.ok(SLTools.checkSLName("2Fname"));
+		assert.ok(SLTools.checkSLName("A Lname"));
+		assert.ok(SLTools.checkSLName("A"));
 	});
 	it('should fail', function() {
 		assert.ok(!SLTools.checkSLName("Fname@22 Lname"));
