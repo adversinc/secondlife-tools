@@ -103,9 +103,11 @@ describe('equalSLName', function() {
 
 describe('timeToSLT', function() {
 	it('should return current time', function() {
-		console.log(SLTools.timeToSLT());
+		// This should display correct current time in SL (how to check?..)
+		console.log(SLTools.timeToSLT().format("YYYY.MM.DD HH:mm"));
 
-		assert.ok(true);
+		// Los Angeles to UTC. Daylight time may be wrong here :(
+		assert.equal(SLTools.timeToSLT().utcOffset(), -420);
 	});
 });
 

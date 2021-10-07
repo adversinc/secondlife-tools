@@ -20,16 +20,15 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@types/moment": "^2.13.0",
-    "mocha": "^8.1.3",
-    "mocha-logger": "^1.0.6",
+    "mocha": "^9.1.2",
+    "mocha-logger": "^1.0.7",
     "nyc": "^15.1.0",
-    "source-map-support": "^0.5.19",
-    "typescript": "^4.0.2"
+    "source-map-support": "^0.5.20",
+    "typescript": "^4.4.3"
   },
   "dependencies": {
-    "@advers/moment-SLT": "^1.0.2",
-    "buffer": "^5.6.0",
+    "@advers/moment-SLT": "^2.1.0",
+    "buffer": "^6.0.3",
     "uuid-parse": "^1.1.0"
   }
 }

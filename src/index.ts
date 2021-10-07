@@ -1,6 +1,9 @@
 import moment from '@advers/moment-SLT';
-import { Moment } from 'moment/moment.d.ts';
 import uuidParse from "uuid-parse";
+
+import dayjs from "dayjs";
+import timezone from 'dayjs/plugin/timezone';
+//dayjs.extend(timezone);
 
 declare var Buffer: any;
 
@@ -62,7 +65,7 @@ function slname2str(slname: string): string {
  * Also, datetime may be empty - current SL time is being returned then
  * @param datetime
  */
-function timeToSLT(datetime = undefined): Moment {
+function timeToSLT(datetime = undefined): moment.Dayjs {
 	if(!datetime) { datetime = new Date(); }
 
 	return moment.tz(datetime, "America/Los_Angeles");
