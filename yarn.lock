@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@advers/moment-SLT@^2.1.0":
-  version "2.1.0"
-  resolved "https://npm.metabizlist.com/@advers%2fmoment-SLT/-/moment-SLT-2.1.0.tgz#a6960eec42d3543c16d3691c9dc60b62bdc21cf4"
-  integrity sha512-WyHFTNLLp88aU0CXBZfQyjqikgsxwLHFT2BAztgXQbT/E27SXs+4IBaykyNURl0BypMzjGLjCid6uPMffC0oVA==
+"@advers/moment-SLT@^3.0.0":
+  version "3.0.0"
+  resolved "https://npm.metabizlist.com/@advers%2fmoment-SLT/-/moment-SLT-3.0.0.tgz#bf81b650db5ed8adc3f76f18cb0319360d042889"
+  integrity sha512-4Wuog38VNebPUs4Wvp4YNNt0sjwY+uta+jPhZS7/pmoH2s//ayDUS4z6bKWS8EY+0D4zvqyXCHkCLEhJ0sapJg==
   dependencies:
     dayjs "^1.10.7"
 

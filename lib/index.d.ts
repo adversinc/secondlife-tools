@@ -1,4 +1,4 @@
-import moment from '@advers/moment-SLT';
+import dayjs from "dayjs";
 /**
  * Transforms slname to the normalized form:
  * - adds "Resident" if slname is a single word login
@@ -23,7 +23,7 @@ declare function slname2str(slname: string): string;
  * Also, datetime may be empty - current SL time is being returned then
  * @param datetime
  */
-declare function timeToSLT(datetime?: any): moment.Dayjs;
+declare function timeToSLT(datetime?: any): dayjs.Dayjs;
 /**
  * Splits the SL name to parts (first name, last name) and returns them as an
  * array.
