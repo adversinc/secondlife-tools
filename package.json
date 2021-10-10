@@ -1,6 +1,6 @@
 {
   "name": "@advers/secondlife-tools",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Tools to manupulate with Second Life entities",
   "private": false,
   "main": "./lib/index.js",
@@ -27,7 +27,7 @@
     "typescript": "^4.4.3"
   },
   "dependencies": {
-    "@advers/moment-SLT": "^2.1.0",
+    "@advers/moment-SLT": "^3.0.0",
     "buffer": "^6.0.3",
     "uuid-parse": "^1.1.0"
   }
