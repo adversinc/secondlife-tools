@@ -1,6 +1,6 @@
 {
   "name": "@advers/secondlife-tools",
-  "version": "2.2.0",
+  "version": "3.0.0",
   "description": "Tools to manupulate with Second Life entities",
   "private": false,
   "main": "./lib/index.js",
