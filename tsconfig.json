@@ -5,11 +5,9 @@
 		//"sourceMap": true,
 		"allowJs": true,
 		"esModuleInterop": true,
-		"moduleResolution": "Node",
-		"module": "commonjs",
-		"target": "ES2018",
+		"module": "nodenext",
+		"target": "es2019",
 		"declaration": true,
-		"noImplicitUseStrict": true,
 
 		"baseUrl": "./",
 		"paths" : {

@@ -1,7 +1,8 @@
-import daySLT from '@advers/moment-SLT';
+import { dayjs, dayjsModule } from '@advers/moment-SLT';
 import uuidParse from "uuid-parse";
 
-import dayjs from "dayjs";
+import * as DayJS from "dayjs";
+
 import timezone from 'dayjs/plugin/timezone';
 //dayjs.extend(timezone);
 
@@ -65,10 +66,10 @@ function slname2str(slname: string): string {
  * Also, datetime may be empty - current SL time is being returned then
  * @param datetime
  */
-function timeToSLT(datetime = undefined): dayjs.Dayjs {
+function timeToSLT(datetime = undefined): DayJS.Dayjs {
 	if(!datetime) { datetime = new Date(); }
 
-	return daySLT(datetime);
+	return dayjs(datetime);
 }
 
 
@@ -146,6 +147,17 @@ function sbUnpackSLKey(packed) {
 	return uuidParse.unparse(bin2);
 }
 
+/**
+ * Check if the given string is a valid UUID
+ * @param slkey
+ */
+function checkSLKey(slkey): boolean {
+	if(typeof slkey !== "string") { return false; }
+	if(slkey.length != 36) { return false; }
+
+	return !!slkey.match(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i);
+}
+
 export default  {
 	/**
 	 * Returns true if slname is a valid Second Life account name
@@ -177,6 +189,7 @@ export default  {
 	sbPackSLKey,
 	sbUnpackSLKey,
 	packSLKey,
-	unpackSLKey
+	unpackSLKey,
+	checkSLKey,
 };
 

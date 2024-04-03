@@ -163,7 +163,6 @@ describe('packSLKey', function() {
 });
 
 
-
 describe('unpackSLKey', function() {
 	it('should unpack correctly', function() {
 		const n = SLTools.unpackSLKey([0xcd,0x93,0x06,0x7e,0x7c,0x4e,0x41,0xc0,0xba,0x91,0xbe,0x01,0xf4,0xba,0xfe,0x35]);
@@ -178,5 +177,20 @@ describe('unpackSLKey', function() {
 		assert.equal(n, "cd93067e-7c4e-41c0-ba91-be01f4bafe35");
 
 		Buffer = t;
+	});
+});
+
+describe('checkSLKey', function() {
+	it('should check correctly', function() {
+		assert.ok(SLTools.checkSLKey("cd93067e-7c4e-41c0-ba91-be01f4bafe35"));
+		assert.ok(SLTools.checkSLKey("00000000-0000-0000-0000-000000000000"));
+		assert.ok(SLTools.checkSLKey("cd93067e-7c4e-41c0-ba91-be01f4bafe35"));
+		assert.ok(SLTools.checkSLKey("CD93067e-7c4e-41c0-ba91-be01f4bafe35"));
+
+		assert.equal(SLTools.checkSLKey("zx93067e-7c4e-41c0-ba91-be01f4bafe3"), false);
+		assert.equal(SLTools.checkSLKey("ZX93067e-7c4e-41c0-ba91-be01f4bafe3"), false);
+		assert.equal(SLTools.checkSLKey(""), false);
+		assert.equal(SLTools.checkSLKey(undefined), false);
+		assert.equal(SLTools.checkSLKey(null), false);
 	});
 });

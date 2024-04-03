@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import * as DayJS from "dayjs";
 /**
  * Transforms slname to the normalized form:
  * - adds "Resident" if slname is a single word login
@@ -23,7 +23,7 @@ declare function slname2str(slname: string): string;
  * Also, datetime may be empty - current SL time is being returned then
  * @param datetime
  */
-declare function timeToSLT(datetime?: any): dayjs.Dayjs;
+declare function timeToSLT(datetime?: any): DayJS.Dayjs;
 /**
  * Splits the SL name to parts (first name, last name) and returns them as an
  * array.
@@ -62,6 +62,11 @@ declare function sbPackSLKey(slkey: any): number[];
  * @returns {string}
  */
 declare function sbUnpackSLKey(packed: any): any;
+/**
+ * Check if the given string is a valid UUID
+ * @param slkey
+ */
+declare function checkSLKey(slkey: any): boolean;
 declare const _default: {
     /**
      * Returns true if slname is a valid Second Life account name
@@ -84,5 +89,6 @@ declare const _default: {
     sbUnpackSLKey: typeof sbUnpackSLKey;
     packSLKey: typeof packSLKey;
     unpackSLKey: typeof unpackSLKey;
+    checkSLKey: typeof checkSLKey;
 };
 export default _default;
