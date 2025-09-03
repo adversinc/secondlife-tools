@@ -1,4 +1,4 @@
-import * as DayJS from "dayjs";
+import type * as DayJS from "dayjs";
 /**
  * Transforms slname to the normalized form:
  * - adds "Resident" if slname is a single word login

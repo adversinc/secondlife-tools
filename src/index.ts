@@ -1,9 +1,8 @@
-import { dayjs, dayjsModule } from '@advers/moment-SLT';
+import { dayjs, type dayjsModule } from '@advers/moment-SLT';
 import uuidParse from "uuid-parse";
 
-import * as DayJS from "dayjs";
-
-import timezone from 'dayjs/plugin/timezone';
+import type * as DayJS from "dayjs";
+//import timezone from 'dayjs/plugin/timezone';
 //dayjs.extend(timezone);
 
 declare var Buffer: any;

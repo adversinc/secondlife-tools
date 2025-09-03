@@ -3,10 +3,8 @@
 		//"emitDeclarationOnly": true,
 
 		//"sourceMap": true,
-		"allowJs": true,
-		"esModuleInterop": true,
-		"module": "nodenext",
-		"target": "es2019",
+		"target": "ES2022",
+		"module": "NodeNext",
 		"declaration": true,
 
 		"baseUrl": "./",

@@ -3,6 +3,7 @@
   "version": "3.0.0",
   "description": "Tools to manupulate with Second Life entities",
   "private": false,
+  "type": "module",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
@@ -28,8 +29,7 @@
   },
   "dependencies": {
     "@advers/moment-SLT": "^4.0.0",
-    "buffer": "^6.0.3",
-    "dayjs": "^1.11.10",
+    "dayjs": "^1.11.18",
     "uuid-parse": "^1.1.0"
   }
 }
