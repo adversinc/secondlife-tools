@@ -1,10 +1,15 @@
-process.env["NODE_CONFIG_DIR"] = __dirname + "/config/";
-const
-	assert = require('assert');
+import assert from 'assert'
+import { Buffer as PolyfillBuffer } from 'buffer/index.js';     // note the trailing slash
+
+const curDir = process.cwd();
+process.env["NODE_CONFIG_DIR"] = curDir + "/config/";
+
+PolyfillBuffer._iAmPolyfill = true;
 
 // Libs to test
-const SLTools = require("../lib/index").default;
-console.log("SLTools:", SLTools);
+import SLTools from "../lib/index.js";
+//const SLTools = require("../lib/index").default;
+//console.log("SLTools:", SLTools);
 
 // Tests
 describe('normalize_slname', function() {
@@ -111,6 +116,7 @@ describe('timeToSLT', function() {
 	});
 });
 
+
 describe('slPackSLKey', function() {
 	it('should pack correctly', function() {
 		const n = SLTools.sbPackSLKey("cd93067e-7c4e-41c0-ba91-be01f4bafe35");
@@ -118,15 +124,18 @@ describe('slPackSLKey', function() {
 	});
 
 	it('should pack correctly with external buffer', function() {
+		Buffer.a = 111;
 		const t = Buffer;
-		Buffer = require("buffer/").Buffer;
+		Buffer = PolyfillBuffer;
 
 		const n = SLTools.sbPackSLKey("cd93067e-7c4e-41c0-ba91-be01f4bafe35");
 		assert.deepEqual(n, new Uint8Array([220, 57, 96, 231, 199, 228, 20, 12, 171, 25, 235, 16, 79, 171, 239, 83]));
+		assert.ok(Buffer._iAmPolyfill, "Buffer is not polyfill");
 
 		Buffer = t;
 	});
 });
+
 
 describe('sbUnpackSLKey', function() {
 	it('should unpack correctly', function() {
@@ -136,10 +145,11 @@ describe('sbUnpackSLKey', function() {
 
 	it('should unpack correctly with external buffer', function() {
 		const t = Buffer;
-		Buffer = require("buffer/").Buffer;
+		Buffer = PolyfillBuffer;
 
 		const n = SLTools.sbUnpackSLKey([220, 57, 96, 231, 199, 228, 20, 12, 171, 25, 235, 16, 79, 171, 239, 83]);
 		assert.equal(n, "cd93067e-7c4e-41c0-ba91-be01f4bafe35");
+		assert.ok(Buffer._iAmPolyfill, "Buffer is not polyfill");
 
 		Buffer = t;
 	});
@@ -153,10 +163,11 @@ describe('packSLKey', function() {
 
 	it('should pack correctly with external buffer', function() {
 		const t = Buffer;
-		Buffer = require("buffer/").Buffer;
+		Buffer = PolyfillBuffer;
 
 		const n = SLTools.packSLKey("cd93067e-7c4e-41c0-ba91-be01f4bafe35");
 		assert.deepEqual(n, new Uint8Array([0xcd,0x93,0x06,0x7e,0x7c,0x4e,0x41,0xc0,0xba,0x91,0xbe,0x01,0xf4,0xba,0xfe,0x35]));
+		assert.ok(Buffer._iAmPolyfill, "Buffer is not polyfill");
 
 		Buffer = t;
 	});
@@ -171,10 +182,11 @@ describe('unpackSLKey', function() {
 
 	it('should unpack correctly with external buffer', function() {
 		const t = Buffer;
-		Buffer = require("buffer/").Buffer;
+		Buffer = PolyfillBuffer;
 
 		const n = SLTools.unpackSLKey([0xcd,0x93,0x06,0x7e,0x7c,0x4e,0x41,0xc0,0xba,0x91,0xbe,0x01,0xf4,0xba,0xfe,0x35]);
 		assert.equal(n, "cd93067e-7c4e-41c0-ba91-be01f4bafe35");
+		assert.ok(Buffer._iAmPolyfill, "Buffer is not polyfill");
 
 		Buffer = t;
 	});
